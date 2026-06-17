@@ -142,7 +142,7 @@ def load_and_preprocess_data(file_path):
     
     # Imputasi untuk visualisasi saja
     for col in df_display.columns:
-        if df_display[col].dtype != 'object':
+        if pd.api.types.is_numeric_dtype(df_display[col]):
             if col not in pend_cols:
                 df_display[col] = df_display[col].fillna(df_display[col].median())
         else:
